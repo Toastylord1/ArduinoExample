@@ -38,9 +38,9 @@ void loop()
 {
 // read the button labeled SWITCH_DOWN. If it's low,
 // then play a note:
-if (Esplora.readButton(SWITCH_DOWN) == LOW) {
+if ((Esplora.readButton(SWITCH_UP) == LOW)||(Esplora.readButton(SWITCH_DOWN) == LOW)||(Esplora.readButton(SWITCH_LEFT) == LOW)||(Esplora.readButton(SWITCH_RIGHT) == LOW)) {
 int slider = Esplora.readSlider();
- 
+Esplora.writeRGB(0, 0, 255);
 // use map() to map the slider's range to the
 // range of notes you have:
 byte thisNote = map(slider, 0, 1023, 0, 13);
@@ -50,5 +50,6 @@ Esplora.tone(note[thisNote]);
 else {
 // if the button isn't pressed, turn the note off:
 Esplora.noTone();
+Esplora.writeRGB(0, 0, 0);
 }
 }
